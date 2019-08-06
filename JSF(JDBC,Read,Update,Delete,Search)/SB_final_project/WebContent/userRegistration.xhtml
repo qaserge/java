@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Add User</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	
+</h:head>
+
+<h:body>
+	
+	<div id="container">
+		<h3>Add new User</h3>
+
+		<h:messages globalOnly="true" />
+
+		<h:form id="form" style="margin-top: 10px;" >
+			<h:panelGrid columns="3">
+			
+				<h:outputLabel>First name:</h:outputLabel> 
+				<h:inputText value="#{user.firstName}" id="firstName" required="true" requiredMessage="Your first name is mandatory." validatorMessage="Only characters">
+				 <f:validateRegex pattern="[a-zA-Z]+" />							
+           		</h:inputText>
+				<h:message for="firstName" styleClass="error"/>
+									
+				<h:outputLabel>Last name:</h:outputLabel> 
+				<h:inputText value="#{user.lastName}" id="lastName" required="true" requiredMessage="Your last name is mandatory." validatorMessage="Only characters"> 
+				<f:validateRegex pattern="[a-zA-Z]+" />							
+           		</h:inputText>
+				<h:message for="lastName" styleClass="error"/>
+				
+				<h:outputLabel>Phone number:</h:outputLabel> 
+				<h:inputText value="#{user.phone}" id="phone" label="phone"	validatorMessage="Phone number must follow xxx-xxx-xxxx">		
+            	<f:validateRegex pattern="\d{3}-\d{3}-\d{4}" />							
+           		</h:inputText>
+				<h:message for="phone" styleClass="error" />
+				
+				<h:outputLabel>Address:</h:outputLabel> 
+				<h:inputText value="#{user.address}" id="address" label="address" >
+				<f:validateLength minimum="0" maximum="200" />
+				</h:inputText>
+				<h:message for="address" styleClass="error" />
+
+				<h:outputLabel>E-mail:</h:outputLabel> 
+				<h:inputText value="#{user.email}" label="email" id="email" validatorMessage="Contain @ and . ">		
+            	<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />							
+           		</h:inputText>
+				<h:message for="email" styleClass="error" />				
+				
+				<h:outputLabel>Username:</h:outputLabel> 
+				<h:inputText value="#{user.username}" id="username" label="username" validator="#{user.validateTheCourseCode}" />
+				<h:message for="username" styleClass="error" />
+				
+				<h:outputLabel>Password:</h:outputLabel> 
+				<h:inputSecret value="#{user.password}" label="password" id="password">
+				<f:validateLength minimum="8"  />
+				</h:inputSecret>
+				<h:message for="password" styleClass="error" />					
+				
+				<h:outputLabel>Receiving:</h:outputLabel>
+				<h:selectOneMenu value="#{user.receiving}">
+					<f:selectItem itemValue="Monthly" itemLabel="Monthly" />
+					<f:selectItem itemValue="Weekly" itemLabel="Weekly" />				
+				</h:selectOneMenu>	
+				<h:message for="receiving" />
+				
+				<h:outputLabel>Profile Type:</h:outputLabel>
+				<h:selectOneMenu value="#{user.profileType}">
+					<f:selectItem itemValue="Private" itemLabel="Private" />
+					<f:selectItem itemValue="Public" itemLabel="Public" />				
+				</h:selectOneMenu>	
+				<h:message for="profileType" />
+								
+				<h:outputLabel /> 				
+				<h:commandButton value="Save" onclick="if (!confirm('Are you filled out correctly?')) return false"
+				styleClass="save" action="#{userController.addUser(user)}"/>
+			
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+		
+		<form action="userList.xhtml"><input type="submit" value="Back to user list" /></form>
+ <br/>
+
+	</div>	
+</h:body>
+</html>

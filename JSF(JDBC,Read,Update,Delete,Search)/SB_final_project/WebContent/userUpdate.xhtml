@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Update Student</title>
+	
+	<h:outputStylesheet library="css" name="style.css"  />
+	
+</h:head>
+
+<h:body>
+
+
+	
+	<div id="container">
+		<h3>User update</h3>
+
+		<h:messages globalOnly="true" />
+
+		<h:form id="form" style="margin-top: 10px;" >
+			<h:panelGrid columns="3">
+			
+				<h:outputLabel>First name:</h:outputLabel> 
+				<h:inputText value="#{user.firstName}" id="firstName" required="true" requiredMessage="Your first name is mandatory."/> 
+				<h:message for="firstName" />
+	
+				<h:outputLabel>Last name:</h:outputLabel> 
+				<h:inputText value="#{user.lastName}" id="lastName" required="true" requiredMessage="Your last name is mandatory."/> 
+				<h:message for="lastName" />
+				
+				<h:outputLabel>Phone number:</h:outputLabel> 
+				<h:inputText value="#{user.phone}" id="phone" /> 
+				<h:message for="phone" />
+				
+				<h:outputLabel>Address:</h:outputLabel> 
+				<h:inputText value="#{user.address}" id="address" /> 
+				<h:message for="address" />
+
+				<h:outputLabel>E-mail:</h:outputLabel> 
+				<h:inputText value="#{user.email}" id="email" /> 
+				<h:message for="email" />				
+				
+				<h:outputLabel>Username:</h:outputLabel> 
+				<h:inputText value="#{user.username}" id="username" /> 
+				<h:message for="username" />
+				
+				<h:outputLabel>Password:</h:outputLabel> 
+				<h:inputText value="#{user.password}" id="password" /> 
+				<h:message for="password" />					
+				
+				<h:outputLabel>Receiving:</h:outputLabel>
+				<h:selectOneMenu value="#{user.receiving}">
+					<f:selectItem itemValue="Monthly" itemLabel="Monthly" />
+					<f:selectItem itemValue="Weekly" itemLabel="Weekly" />				
+				</h:selectOneMenu>	
+				<h:message for="receiving" />
+				
+				<h:outputLabel>Profile Type:</h:outputLabel>
+				<h:selectOneMenu value="#{user.profileType}">
+					<f:selectItem itemValue="Private" itemLabel="Private" />
+					<f:selectItem itemValue="Public" itemLabel="Public" />				
+				</h:selectOneMenu>	
+				<h:message for="profileType" />
+				
+				<h:inputHidden value="#{user.id}" />
+				<h:commandButton value="Save" styleClass="save" action="#{userController.updateUser(user)}"/>
+			
+			</h:panelGrid>
+		</h:form>
+
+		<div style="clear: both;"></div>
+
+		<form action="userList.xhtml"><input type="submit" value="Back to user list" /></form>
+
+	</div>	
+</h:body>
+</html>
