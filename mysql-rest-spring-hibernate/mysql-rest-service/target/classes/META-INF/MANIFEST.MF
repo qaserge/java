@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: mysql-rest-service
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Tatiana
+Implementation-Vendor-Id: com.javahelps
+Build-Jdk: 1.8.0_221
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/mysql-rest-service
+Created-By: Maven Integration for Eclipse
+
