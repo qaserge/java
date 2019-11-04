@@ -1,6 +1,6 @@
-JSF program
+JSF app
 
-connection to MS SQL
+MS SQL
 web GUI
 MVC Architecture
 
